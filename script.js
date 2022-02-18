@@ -1,9 +1,8 @@
-let ep = [];
-const section = document.querySelector("episodes");
+const section = document.querySelector(".episodes");
 async function trueDitactive() {
   try {
     const req = await fetch("https://api.tvmaze.com/shows/5/episodes");
-    ep = await req.json();
+    let ep = await req.json();
     ditactivEps(ep);
     // console.log(ep);
   } catch (err) {
@@ -14,7 +13,7 @@ let slc = document.querySelector(".select");
 
 function ditactivEps(eps) {
   eps.forEach((season) => {
-    //creat
+    //creat element
     let sec = document.createElement("section");
     let pic = document.createElement("img");
     let title = document.createElement("h6");
@@ -45,7 +44,6 @@ function ditactivEps(eps) {
   });
   slc.addEventListener("change", function (evn) {
     const gav = document.querySelectorAll(".secTD h6");
-    // console.log(evn.target.value);
     Array.from(gav).forEach((item) => {
       item.parentElement.style.display = "inline-block";
       if (evn.target.value) {
@@ -55,17 +53,14 @@ function ditactivEps(eps) {
           item.parentElement.style.display = "none";
         }
       }
-      // console.log(item);
-      // console.log(item.textContent);
-      // console.log(evn.target.value);
     });
   });
 }
 trueDitactive();
 
-//serching
-const serchBox = document.querySelector(".serch");
-serchBox.addEventListener("keyup", function (evn) {
+//searching
+const searchBox = document.querySelector(".search");
+searchBox.addEventListener("keyup", function (evn) {
   let valueEp = evn.target.value.toLowerCase();
   let nameEps = document.querySelectorAll("h6");
   let secNew = document.querySelectorAll(".secTD");
