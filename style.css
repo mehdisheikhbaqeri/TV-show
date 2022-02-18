@@ -4,7 +4,8 @@
   padding: 0;
 }
 body {
-  background: #8e806a;
+  /* background: #8e806a; */
+  background: radial-gradient(#ffe6bc, #8e806a);
 }
 .select {
   padding: 0 5px;
@@ -12,7 +13,7 @@ body {
   height: 25px;
 }
 .hedder {
-  background: #c3b091;
+  /* background: #c3b091; */
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
@@ -24,10 +25,25 @@ body {
 option {
   padding-bottom: 5px;
 }
+select:hover {
+  background: #ffe6bc;
+}
 h1 {
+  font-family: "Redressed";
   text-align: center;
   margin: 20px 0;
   font-size: 50px;
+}
+h6 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 20px;
+}
+h6:hover {
+  font-size: 21px;
+  color: #ffe6bc;
+  transition: 0.5s;
+  text-shadow: 5px 10px 5px #000;
+  cursor: none;
 }
 .serch {
   display: flex;
@@ -38,23 +54,41 @@ h1 {
   /* display: flex;
   flex-wrap: wrap; */
   text-align: center;
+  justify-content: center;
 }
 .episodes {
-  width: 100%;
-  padding: 0 5px;
+  /* width: 100%; */
+  /* padding: 0 5px; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: 10px;
-  /* justify-content: space-around; */
 }
 .episodes i {
   text-align: center;
   padding: 10px;
 }
 .fa-solid:hover {
-  color: cornflowerblue;
+  color: #8e806a;
   transition: 500ms;
 }
+.fa-solid {
+  padding-left: 15px;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
 img {
-  border-radius: 20px;
+  width: 300px;
+  height: 200px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+img:hover {
+  transform: scale(1.01);
+}
+
+a:visited,
+a:active,
+a {
+  color: #000;
 }

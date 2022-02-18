@@ -10,6 +10,7 @@ async function trueDitactive() {
     console.log(err);
   }
 }
+let slc = document.querySelector(".select");
 
 function ditactivEps(eps) {
   eps.forEach((season) => {
@@ -20,14 +21,15 @@ function ditactivEps(eps) {
     let opt = document.createElement("option");
     let playIcone = document.createElement("i");
     let playTimer = document.createElement("i");
+    let play = document.createElement("a");
+    play.setAttribute("href", season.url);
     // console.log(eps);
     //selector
-    let slc = document.querySelector(".select");
     let all = document.querySelector(".episodes");
     //text content
-    opt.textContent = `${season.season}-${season.number},${season.name}`;
+    opt.textContent = `${season.name} , ${season.season}-${season.number}`;
     pic.src = season.image.medium;
-    title.textContent = ` ${season.name} , ${season.season}-${season.number}`;
+    title.textContent = `${season.name} , ${season.season}-${season.number}`;
     //add
     sec.classList.add("secTD");
     playIcone.classList.add("fa-solid", "fa-circle-play");
@@ -37,13 +39,28 @@ function ditactivEps(eps) {
     sec.append(pic);
     sec.append(title);
     slc.append(opt);
-    all.append(sec);
-    sec.append(playIcone);
+    play.append(playIcone);
+    sec.append(play);
     sec.append(playTimer);
   });
-  console.log(slc);
+  slc.addEventListener("change", function (evn) {
+    const gav = document.querySelectorAll(".secTD h6");
+    // console.log(evn.target.value);
+    Array.from(gav).forEach((item) => {
+      item.parentElement.style.display = "inline-block";
+      if (evn.target.value) {
+        if (item.textContent === evn.target.value) {
+          item.parentElement.style.display = "inline-block";
+        } else {
+          item.parentElement.style.display = "none";
+        }
+      }
+      // console.log(item);
+      // console.log(item.textContent);
+      // console.log(evn.target.value);
+    });
+  });
 }
-
 trueDitactive();
 
 //serching
@@ -56,7 +73,7 @@ serchBox.addEventListener("keyup", function (evn) {
     if (!secNew[i].innerText.toLowerCase().includes(valueEp)) {
       secNew[i].style.display = "none";
     } else {
-      secNew[i].style.display = "block";
+      secNew[i].style.display = "inline-block";
     }
   }
 });
